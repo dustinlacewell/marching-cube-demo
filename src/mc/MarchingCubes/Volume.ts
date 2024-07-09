@@ -34,7 +34,7 @@ export class Volume {
       }
     }
   }
-  
+
 
   public updatePoints(newPoints: boolean[][][]) {
     for (let z = 0; z < this.size; z++) {
@@ -51,7 +51,6 @@ export class Volume {
 
     return geoms
   }
-
 
   private getActiveCorners(x: number, y: number, z: number): Point[] {
     return cubeCorners.map(([x2, y2, z2]) => this.points[x + x2][y + y2][z + z2])
