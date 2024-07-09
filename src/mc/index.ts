@@ -1,1 +1,1 @@
-export { Volume } from "./MarchingCubes/Volume";
+export { Volume } from "./Volume";

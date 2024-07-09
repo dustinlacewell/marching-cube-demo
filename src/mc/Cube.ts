@@ -10,6 +10,7 @@ export class Cube {
   }
 
   public generateGeometry() {
+    this.geometry = new BufferGeometry();
     let cubeindex = 0;
     for (let i = 0; i < 8; i++) {
       if (this.corners[i].on) {
@@ -62,28 +63,26 @@ export class Cube {
         let vb = e(eb);
         let vc = e(ec);
 
-        const calculateNormal = (va: number[], vb: number[], vc: number[]) => {
-            const ab = new Vector3().subVectors(new Vector3(...vb), new Vector3(...va));
-            const ac = new Vector3().subVectors(new Vector3(...vc), new Vector3(...va));
-            return new Vector3().crossVectors(ab, ac).normalize();
-        }
+        // const calculateNormal = (va: number[], vb: number[], vc: number[]) => {
+        //     const ab = new Vector3().subVectors(new Vector3(...vb), new Vector3(...va));
+        //     const ac = new Vector3().subVectors(new Vector3(...vc), new Vector3(...va));
+        //     return new Vector3().crossVectors(ab, ac).normalize();
+        // }
         
-        // Inside the triangle generation loop:
-        const normal = calculateNormal(va, vb, vc);
-        const center = new Vector3().addVectors(new Vector3(...va), new Vector3(...vb)).add(new Vector3(...vc)).divideScalar(3);
-        const direction = new Vector3().subVectors(center, this.position);
+        // // Inside the triangle generation loop:
+        // const normal = calculateNormal(va, vb, vc);
+        // const center = new Vector3().addVectors(new Vector3(...va), new Vector3(...vb)).add(new Vector3(...vc)).divideScalar(3);
+        // const direction = new Vector3().subVectors(center, this.position);
         
-        if (normal.dot(direction) < 0) {
-            // Reverse the winding order
-            [vb, vc] = [vc, vb];
-        }        
+        // if (normal.dot(direction) < 0) {
+        //     // Reverse the winding order
+        //     [vb, vc] = [vc, vb];
+        // }        
         
-        // Add a small offset based on the triangle count
-        const offset = triangleCount * 0.0;
         vertices.push(
-            ...va.map(v => v + offset),
-            ...vb.map(v => v + offset),
-            ...vc.map(v => v + offset)
+            ...va,
+            ...vb,
+            ...vc
         );
         
         triangleCount++;

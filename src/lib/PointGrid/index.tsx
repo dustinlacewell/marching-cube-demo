@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Vector3, Mesh, MeshBasicMaterial } from 'three'
 import { useThree } from '@react-three/fiber'
-import { Volume } from '@/mc/MarchingCubes/Volume' // Adjust the import path as necessary
+import { Volume } from '@/mc/Volume'
 
 interface PointGridProps {
   size?: number
   spacing?: number
 }
 
-const PointGrid: React.FC<PointGridProps> = ({ size = 2, spacing = 1 }) => {
+const PointGrid: React.FC<PointGridProps> = ({ size = 4, spacing = 1 }) => {
   console.log("Rendering...")
   const { scene } = useThree()
 
