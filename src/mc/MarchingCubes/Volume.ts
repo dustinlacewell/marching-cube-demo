@@ -34,6 +34,7 @@ export class Volume {
       }
     }
   }
+  
 
   public updatePoints(newPoints: boolean[][][]) {
     for (let z = 0; z < this.size; z++) {
